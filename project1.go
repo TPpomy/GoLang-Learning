@@ -2,13 +2,71 @@ package main
 
 import (
 	"fmt"
+	s "strings"
 )
 var gVar int = 200
+var p =fmt.Println
 func main(){
+	p("Contains: ", s.Contains("test", "es"))
+	p("Count: ",s.Count("test","t"))
+	p("HasPreFix: ",s.HasPrefix("test","te"))
+	p("HasSuffix: ",s.HasSuffix("test","st"))
+	p("Index: ",s.Index("test","e"))
+	p("Join: ",s.Join([]string{"a","b"},"-"))
+	p("Repeat: ",s.Repeat("a",5))
+	p("Replace: ",s.Replace("foo","o","0",-1))
+	p("Replace: ",s.Replace("fooo","o","0",2))
+	p("Split: ",s.Split("a-b-c-d-e","-"))
+	p("ToLower: ",s.ToLower("LOWER"))
+	p("ToUPper: ",s.ToUpper("upper"))
+	p("Len: ",len("Hello"))
 	
-	basicArray(5,5,5,5);
-	variadicFunction(5,5,5,5);
+
+
+}
+func goRoutine(){
+	f:=func(n int) {
+		for i:=0; i<=5; i++{
+			fmt.Println(n , " " , i)
+			
+		}
+	}
+	go f(0)
+	var input string
+	fmt.Scanln(&input);
+}
+func basicStructure(){
+	type books struct{
+		title string
+		subtitle string
+		author string
+		price float64
+	}
+	book:=books{title:"GoLang Learning",subtitle:"in 2022",author:"Poom",price:231.21}
+	fmt.Println(book);
 	
+}
+func closurefunction(){
+	app:=func (x,y int) int{
+		return x+y
+	}
+	fmt.Println(app(3,4))
+}
+func mapFunction(){
+	x:=map[string] string{
+		"TH":"Thailand",
+		"JP":"Japan",
+	}
+	fmt.Println(x["TH"]);
+}
+func sliceArray(){
+	// slice1:=[]int{1,2,3}
+	// slice2:=append(slice1,4,5)
+	// fmt.Println(slice2);
+	slice1:=[]int{1,2,3,4,5}
+	slice2:=make([]int,3)
+	copy(slice2,slice1)
+	fmt.Println(slice2)
 }
 func basicArray(x...int){
 	//x:=[5]int{1,2,3,4,5} การประกาศตัวแปร Array
@@ -32,7 +90,7 @@ func variadicFunction(args...int){
 		total += n
 	}
 	fmt.Println(args);
-	fmt.Println(total)
+	fmt.Println(total/int(5))
 }//Variadic Function
 
 func textFunction(str string){
